@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -11,6 +12,13 @@ void print_list(struct song_node *s) {
         s = (s->next);
     }
     printf("]\n");
+}
+
+struct song_node * get(struct song_node *s, char *name, char *artist) {
+	struct song_node *temp = s;
+	while(temp != NULL) {
+		if(temp->name == name && temp->artist == artist) return temp;
+	}
 }
 
 struct song_node * insert_front(struct song_node *next, char *name, char *artist) {
