@@ -1,15 +1,16 @@
 #ifndef	LINKED_LIST
 
-struct cat {
+struct song_node {
     char name[100];
-    int age;
-    struct cat *next;
+    char artist[100];
+    struct song_node *next;
 };
 
-void print_list(struct cat *c);
-struct cat * insert_front(struct cat *next, char *name, int age);
-struct cat * free_list(struct cat *c);
-struct cat * remove_node(struct cat *front, char *name, int age);
+void print_list(struct song_node *s);
+struct song_node * insert_front(struct song_node *s, char *name, char *artis\
+t);
+struct song_node * free_list(struct song_node *s);
+struct song_node * remove_node(struct song_node *front, char *name, char *artist);
 
 void populate_random_arr(char *arr, int len);
 

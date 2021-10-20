@@ -4,38 +4,38 @@
 #include <time.h>
 #include "linked_list.h"
 
-void print_list(struct cat *c) {
+void print_list(struct song_node *s) {
     printf("[  ");
-    while (c) {
-        printf("Cat {Name: %s, Age: %d} ", c->name, c->age);
-        c = (c->next);
+    while (s) {
+        printf("Song {Name: %s, Artist: %s} ", s->name, s->artist);
+        s = (s->next);
     }
     printf("]\n");
 }
 
-struct cat * insert_front(struct cat *next, char *name, int age) {
-    struct cat *new_cat = malloc(sizeof(struct cat));
-    strcpy(new_cat->name, name);
-    new_cat->age = age;
-    new_cat->next = next;
-    return new_cat;
+struct song_node * insert_front(struct song_node *next, char *name, char *artist) {
+    struct song_node *new_song = malloc(sizeof(struct song_node));
+    strcpy(new_song->name, name);
+    strcpy(new_song->artist, artist);
+    new_song->next = next;
+    return new_song;
 }
 
-struct cat * free_list(struct cat *c) {
-    struct cat *next;
-    while (c) {
-        next = c->next;
-        free(c);
-        c = next;
+struct song_node * free_list(struct song_node *s) {
+    struct song_node *next;
+    while (s) {
+        next = s->next;
+        free(s);
+        s = next;
     }
-    return c;
+    return s;
 }
 
-struct cat * remove_node(struct cat *front, char *name, int age) {
-    struct cat *before = 0;
-    struct cat *current = front;
+struct song_node * remove_node(struct song_node *front, char *name, char *artist) {
+    struct song_node *before = 0;
+    struct song_node *current = front;
     while (current) {
-        if (strcmp(current->name, name) == 0 && (current->age) == age) {
+      if (strcmp(current->name, name) == 0 && strcmp(current->artist, artist) == 0) {
             if (before) before->next = current->next;
             else front = current->next;
             free(current);
