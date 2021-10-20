@@ -18,8 +18,11 @@ struct song_node * get(struct song_node *s, char *name, char *artist) {
 	struct song_node *temp = s;
 	while(temp != NULL) {
 		if(temp->name == name && temp->artist == artist) return temp;
+		temp = temp->next;
 	}
 }
+
+struct song_node *get_first(struct song_node *s, char
 
 struct song_node * insert_front(struct song_node *next, char *name, char *artist) {
     struct song_node *new_song = malloc(sizeof(struct song_node));
