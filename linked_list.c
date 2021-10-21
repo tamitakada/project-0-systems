@@ -16,12 +16,52 @@ void print_list(struct song_node *s) {
 
 struct song_node * get(struct song_node *s, char *name, char *artist) {
 	while(s) {
-		if(temp->name == name && temp->artist == artist) return s;
+		if(s->name == name && s->artist == artist) return s;
 		s = s->next;
 	}
+    return 0;
 }
 
-struct song_node *get_first(struct song_node *s, char *artist) {
+//struct song_node *get_first(struct song_node *s, char *artist) {
+//}
+
+struct song_node * insert(struct song_node *s, char *name, char *artist) {
+    struct song_node *new_node;
+    strcpy(new_node->artist, artist);
+    strcpy(new_node->name, name);
+    
+    struct song_node *previous = 0;
+    
+    int index = 0;
+    
+    while (s) {
+        int cmp = songcmp(s, new_node);
+        if (!cmp) {
+            new_node->next = s->next;
+            s->next = new_node;
+            return s;
+        } else if (cmp > 0) {
+            previous->next = new_node;
+            new_node->next = s;
+            if (index == 0) return new_node;
+            else return s;
+        }
+        
+        previous = s;
+        s = s->next;
+        index++;
+    }
+    
+    return s;
+}
+
+int songcmp(struct song_node *first, struct song_node *second) {
+    int artist_cmp = strcmp(first->artist, second->artist);
+    if (artist_cmp) return artist_cmp;
+    else {
+        int song_cmp = strcmp(first->name, second->name);
+        return song_cmp;
+    }
 }
 
 struct song_node * insert_front(struct song_node *next, char *name, char *artist) {
