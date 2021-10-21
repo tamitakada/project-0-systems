@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -95,13 +94,4 @@ struct song_node * remove_node(struct song_node *front, char *name, char *artist
         current = (current->next);
     }
     return front;
-}
-
-void populate_random_arr(char *arr, int len) {
-    int i;
-    for (i = 0; i < len; i++) {
-	arr[i] = (rand() % 24) + 65;
-    }
-
-    arr[len - 1] = '\0';
 }
