@@ -16,12 +16,16 @@ void print_list(struct song_node *s) {
 
 struct song_node * get(struct song_node *s, char *name, char *artist) {
 	while(s) {
-		if(temp->name == name && temp->artist == artist) return s;
+		if(s->name == name && s->artist == artist) return s;
 		s = s->next;
 	}
 }
 
 struct song_node *get_first(struct song_node *s, char *artist) {
+	while(s) {
+		if(s->artist == artist) return s;
+		s = s->next;
+	}
 }
 
 struct song_node * insert_front(struct song_node *next, char *name, char *artist) {
