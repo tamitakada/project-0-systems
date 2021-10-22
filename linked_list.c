@@ -21,8 +21,12 @@ struct song_node * get(struct song_node *s, char *name, char *artist) {
     return 0;
 }
 
-//struct song_node *get_first(struct song_node *s, char *artist) {
-//}
+struct song_node *get_first(struct song_node *s, char *artist) {
+	while(s) {
+		if(s->artist == artist) return s;
+		s = s->next;
+	}
+}
 
 struct song_node * insert(struct song_node *s, char *name, char *artist) {
     struct song_node *new_node;
@@ -61,6 +65,7 @@ int songcmp(struct song_node *first, struct song_node *second) {
         int song_cmp = strcmp(first->name, second->name);
         return song_cmp;
     }
+>>>>>>> c96444960aea4170036b6fc39365d8e72ff974ed
 }
 
 struct song_node * insert_front(struct song_node *next, char *name, char *artist) {
