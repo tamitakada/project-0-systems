@@ -30,17 +30,23 @@ struct song_node *get_first(struct song_node *s, char *artist) {
 }
 
 struct song_node * insert(struct song_node *s, char *name, char *artist) {
-    struct song_node *new_node;
+    struct song_node *original_start = s;
+    
+    struct song_node *new_node = malloc(sizeof(struct song_node));
     strcpy(new_node->artist, artist);
     strcpy(new_node->name, name);
     
-    struct song_node *previous = 0;
+    if (!s) {
+        new_node->next = 0;
+        return new_node;
+    }
     
+    struct song_node *previous = 0;
     int index = 0;
     
     while (s) {
         int cmp = songcmp(s, new_node);
-        if (!cmp) {
+        if (cmp == 0) {
             new_node->next = s->next;
             s->next = new_node;
             return s;
@@ -48,7 +54,7 @@ struct song_node * insert(struct song_node *s, char *name, char *artist) {
             previous->next = new_node;
             new_node->next = s;
             if (index == 0) return new_node;
-            else return s;
+            else return original_start;
         }
         
         previous = s;
@@ -56,7 +62,10 @@ struct song_node * insert(struct song_node *s, char *name, char *artist) {
         index++;
     }
     
-    return s;
+    previous->next = new_node;
+    new_node->next = 0;
+    
+    return original_start;
 }
 
 int songcmp(struct song_node *first, struct song_node *second) {
