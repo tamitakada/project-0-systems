@@ -65,7 +65,24 @@ int songcmp(struct song_node *first, struct song_node *second) {
         int song_cmp = strcmp(first->name, second->name);
         return song_cmp;
     }
->>>>>>> c96444960aea4170036b6fc39365d8e72ff974ed
+}
+
+struct song_node * get_random(struct song_node *s) {
+    int size = 0;
+    struct song_node *temp = s;
+    while (temp) {
+        size++;
+        temp = temp->next;
+    }
+    
+    int random = (rand() % size);
+    int current = 0;
+    while (current < random) {
+    	current++;
+    	s = s->next;
+    }
+    
+    return s;
 }
 
 struct song_node * insert_front(struct song_node *next, char *name, char *artist) {
