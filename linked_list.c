@@ -26,6 +26,7 @@ struct song_node *get_first(struct song_node *s, char *artist) {
 		if(s->artist == artist) return s;
 		s = s->next;
 	}
+    return 0;
 }
 
 struct song_node * insert(struct song_node *s, char *name, char *artist) {
