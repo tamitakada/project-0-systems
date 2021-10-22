@@ -8,6 +8,7 @@ struct song_node {
 
 void print_list(struct song_node *s);
 struct song_node * get(struct song_node *s, char *name, char *artist);
+struct song_node * get_first(struct song_node *s, char *artist);
 struct song_node * insert_front(struct song_node *s, char *name, char *artist);
 struct song_node * insert(struct song_node *s, char *name, char *artist);
 int songcmp(struct song_node *first, struct song_node *second);
