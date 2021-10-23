@@ -1,6 +1,7 @@
 #include "library.h"
 #include "test.h"
 #include <stdio.h>
+#include "linked_list.h"
 
 int main() {
     printf("------------ Testing create_library ------------\n");
@@ -70,6 +71,26 @@ int main() {
     printf("\nArtist 'I Don't Exist': ");
     char fake_artist[50] = "I Don't Exist";
     print_all_entries_under_artist(lib, fake_artist);
+    
+    printf("\n------------ Testing find_song in library ------------\n\nFind 'Romanian Folk Dances' by Bela Bartok: ");
+    
+    struct song_node *song_0 = find_song(lib, name_3, artist_3);
+    if (song_0) {
+        printf("Song {Name: %s, Artist: %s}\n", song_0->name, song_0->artist);
+    } else printf("Not Found\n");
+    
+    printf("\nFind '19 Hungarian Rhapsodies' by Franz Liszt: ");
+    struct song_node *song_1 = find_song(lib, name_4, artist_4);
+    if (song_1) {
+        printf("Song {Name: %s, Artist: %s}\n", song_1->name, song_1->artist);
+    } else printf("Not Found\n");
+    
+    printf("\nFind 'Fake Song' by I Don't Exist: ");
+    char fake_name[50] = "Fake Song";
+    struct song_node *song_2 = find_song(lib, fake_name, fake_artist);
+    if (song_2) {
+        printf("Song {Name: %s, Artist: %s}\n", song_2->name, song_2->artist);
+    } else printf("Not Found\n");
 
 //    insert_front_tests();
 }
