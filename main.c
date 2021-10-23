@@ -104,10 +104,9 @@ int main() {
     printf("\nCurrent entries under 'Camille Saint-Saëns': ");
     print_all_entries_under_artist(lib, artist_5);
     
-    printf("\n------------ Testing clear_library in library ------------\n\nClearing library...");
+    printf("\n------------ Testing clear_library in library ------------\n\nClearing library...\n");
     clear_library(lib);
     
     printf("print_all_entries in library:\n");
     print_all_entries(lib);
-//    insert_front_tests();
 }
