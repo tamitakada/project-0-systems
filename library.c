@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "linked_list.h"
 #include <ctype.h>
+#include <string.h>
 
 struct song_node ** create_library() {
     struct song_node **lib = malloc(27 * sizeof(struct song_node));
@@ -30,7 +31,12 @@ void print_all_entries_under_artist(struct song_node **lib, char *artist) {
     if (isalpha(artist[0])) index = tolower(artist[0]) - 97;
     
     struct song_node *song = get_first(lib[index], artist);
-    print_list(song);
+    printf("[  ");
+    while (song && strcmp(song->artist, artist) == 0) {
+        printf("Song {Name: %s, Artist: %s} ", song->name, song->artist);
+        song = (song->next);
+    }
+    printf("]\n");
 }
 
 void print_all_entries(struct song_node **lib) {
@@ -61,4 +67,10 @@ struct song_node * find_artist(struct song_node **lib, char *artist) {
     int index = 26;
     if (isalpha(artist[0])) index = tolower(artist[0]) - 97;
     return get_first(lib[index], artist);
+}
+
+void delete_song(struct song_node **lib, char *name, char *artist) {
+    int index = 26;
+    if (isalpha(artist[0])) index = tolower(artist[0]) - 97;
+    lib[index] = remove_node(lib[index], name, artist);
 }
