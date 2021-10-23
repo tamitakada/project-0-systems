@@ -15,7 +15,7 @@ struct song_node ** create_library() {
 
 void add_song(struct song_node **lib, char *name, char *artist) {
     int index = 26;
-    if (isalpha(name[0])) index = tolower(artist[0]) - 97;
+    if (isalpha(artist[0])) index = tolower(artist[0]) - 97;
     lib[index] = insert(lib[index], name, artist);
 }
 
@@ -36,7 +36,8 @@ void print_all_entries_under_artist(struct song_node **lib, char *artist) {
 void print_all_entries(struct song_node **lib) {
     int i;
     for (i = 0; i < 27; i++) {
-        printf("%c\n", i + 97);
+        if (i == 26) printf("other\n");
+        else printf("%c\n", i + 97);
         print_list(lib[i]);
         printf("\n");
     }
