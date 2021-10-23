@@ -119,10 +119,11 @@ struct song_node * remove_node(struct song_node *front, char *name, char *artist
     struct song_node *before = 0;
     struct song_node *current = front;
     while (current) {
-      if (strcmp(current->name, name) == 0 && strcmp(current->artist, artist) == 0) {
+        if (strcmp(current->name, name) == 0 && strcmp(current->artist, artist) == 0) {
             if (before) before->next = current->next;
             else front = current->next;
             free(current);
+            break;
         }
         before = current;
         current = (current->next);
