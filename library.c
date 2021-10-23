@@ -50,3 +50,15 @@ void print_shuffled(struct song_node **lib, int num_songs) {
         printf("Song #%d: Artist | %s, Name | %s\n", i + 1, song->artist, song->name);
     }
 }
+
+struct song_node * find_song(struct song_node **lib, char *name, char *artist) {
+    int index = 26;
+    if (isalpha(artist[0])) index = tolower(artist[0]) - 97;
+    return get(lib[index], name, artist);
+}
+
+struct song_node * find_artist(struct song_node **lib, char *artist) {
+    int index = 26;
+    if (isalpha(artist[0])) index = tolower(artist[0]) - 97;
+    return get_first(lib[index], artist);
+}
