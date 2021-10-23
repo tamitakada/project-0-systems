@@ -92,5 +92,17 @@ int main() {
         printf("Song {Name: %s, Artist: %s}\n", song_2->name, song_2->artist);
     } else printf("Not Found\n");
 
+    printf("\n------------ Testing delete_song in library ------------\n\nDeleting 'Petite suite' by Claude Debussy...");
+    delete_song(lib, name_1, artist_0);
+    
+    printf("\nCurrent entries under 'Claude Debussy': ");
+    print_all_entries_under_artist(lib, artist_0);
+    
+    printf("\nDeleting ONE of TWO copies of 'The Carnival of the Animals' by Camille Saint-Saëns...");
+    delete_song(lib, name_5, artist_5);
+    
+    printf("\nCurrent entries under 'Camille Saint-Saëns': ");
+    print_all_entries_under_artist(lib, artist_5);
+    
 //    insert_front_tests();
 }
