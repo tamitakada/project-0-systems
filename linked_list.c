@@ -14,8 +14,8 @@ void print_list(struct song_node *s) {
 }
 
 struct song_node * get(struct song_node *s, char *name, char *artist) {
-	while(s) {
-		if(s->name == name && s->artist == artist) return s;
+	while (s) {
+		if (strcmp(s->artist, artist) == 0 && strcmp(s->name, name) == 0) return s;
 		s = s->next;
 	}
     return 0;
