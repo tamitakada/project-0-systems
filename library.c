@@ -74,3 +74,10 @@ void delete_song(struct song_node **lib, char *name, char *artist) {
     if (isalpha(artist[0])) index = tolower(artist[0]) - 97;
     lib[index] = remove_node(lib[index], name, artist);
 }
+
+void clear_library(struct song_node **lib) {
+    int i;
+    for (i = 0; i < 27; i++) {
+        if (lib[i]) lib[i] = free_list(lib[i]);
+    }
+}
