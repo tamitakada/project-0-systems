@@ -3,7 +3,14 @@
 #include <stdio.h>
 #include "linked_list.h"
 
+void test_library();
+
 int main() {
+    printf("TESTING LIBRARY FUNCS ==================================\n\n");
+    test_library();
+}
+
+void test_library() {
     printf("------------ Testing create_library ------------\n");
     struct song_node **lib = create_library();
     
