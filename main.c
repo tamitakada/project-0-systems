@@ -1,11 +1,16 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
 #include "library.h"
 #include "test.h"
-#include <stdio.h>
 #include "linked_list.h"
 
 void test_library();
 
 int main() {
+    srand(time(NULL));
+    
     printf("TESTING LIBRARY FUNCS ==================================\n\n");
     test_library();
 }
@@ -98,6 +103,12 @@ void test_library() {
     if (song_2) {
         printf("Song {Name: %s, Artist: %s}\n", song_2->name, song_2->artist);
     } else printf("Not Found\n");
+    
+    printf("\n------------ Testing print_shuffled in library ------------\n\nShuffle print 5 songs:\n");
+    print_shuffled(lib, 5);
+    
+    printf("\nShuffle print 10 songs:\n");
+    print_shuffled(lib, 10);
 
     printf("\n------------ Testing delete_song in library ------------\n\nDeleting 'Petite suite' by Claude Debussy...");
     delete_song(lib, name_1, artist_0);

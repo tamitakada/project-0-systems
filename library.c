@@ -50,10 +50,25 @@ void print_all_entries(struct song_node **lib) {
 }
 
 void print_shuffled(struct song_node **lib, int num_songs) {
+    int non_empty_letters[27];
+    int count = 0;
+    
     int i;
-    for (i = 0; i < num_songs; i++) {
-        struct song_node *song = get_random(lib[0]);
-        printf("Song #%d: Artist | %s, Name | %s\n", i + 1, song->artist, song->name);
+    for (i = 0; i < 27; i++) {
+        if (lib[i]) {
+            non_empty_letters[count] = i;
+            count++;
+        }
+    }
+    
+    if (count == 0) printf("Empty library\n");
+    else {
+        int j;
+        for (j = 0; j < num_songs; j++) {
+            int random = rand() % count;
+            struct song_node *song = get_random(lib[non_empty_letters[random]]);
+            printf("Song #%d: Artist | %s, Name | %s\n", j + 1, song->artist, song->name);
+        }
     }
 }
 
