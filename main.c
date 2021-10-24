@@ -57,7 +57,7 @@ int main() {
    	hello = hello->next;
    	hello = hello->next;
    	hello = hello->next;
-   	printf("%p: \n", hello);
+   	printf("%p: \n", hello->next);
     
 }
 
