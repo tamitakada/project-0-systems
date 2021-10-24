@@ -15,8 +15,8 @@ int main() {
     printf("\nTESTING LINKED LIST FUNCS ==================================\n\n");
     test_linked_list();
     
-//    printf("TESTING LIBRARY FUNCS ==================================\n\n");
-//    test_library();
+    printf("TESTING LIBRARY FUNCS ==================================\n\n");
+    test_library();
 }
 
 void test_library() {
