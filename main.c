@@ -7,12 +7,16 @@
 #include "linked_list.h"
 
 void test_library();
+void test_linked_list();
 
 int main() {
     srand(time(NULL));
     
-    printf("TESTING LIBRARY FUNCS ==================================\n\n");
-    test_library();
+    printf("\nTESTING LINKED LIST FUNCS ==================================\n\n");
+    test_linked_list();
+    
+//    printf("TESTING LIBRARY FUNCS ==================================\n\n");
+//    test_library();
 }
 
 void test_library() {
@@ -127,4 +131,83 @@ void test_library() {
     
     printf("print_all_entries in library:\n");
     print_all_entries(lib);
+}
+
+void test_linked_list() {
+    printf("------------ Testing insert_front ------------\n");
+    
+    char name_0[50] = "Cello Suite No. 1 in G Major";
+    char artist_0[50] = "Johann Sebastian Bach";
+    
+    struct song_node * song = 0;
+
+    printf("Inserting front 'Cello Suite No. 1 in G Major' by Johann Sebastian Bach...\n");
+    song = insert_front(song, name_0, artist_0);
+    
+    char name_1[50] = "Requiem in D Minor";
+    char artist_1[50] = "Wolfgang Amadeus Mozart";
+    
+    printf("Inserting front 'Requiem in D Minor' by Wolfgang Amadeus Mozart...\n");
+    song = insert_front(song, name_1, artist_1);
+    
+    char name_2[50] = "24 Preludes, Op. 28";
+    char artist_2[50] = "Frederic Chopin";
+    
+    printf("Inserting front '24 Preludes, Op. 28' by Frederic Chopin...\n");
+    song = insert_front(song, name_2, artist_2);
+    
+    printf("\nprint_list:\n");
+    print_list(song);
+    
+    printf("\n------------ Testing insert ------------\n");
+    
+    char name_3[50] = "Nocturne No. 2 in E-Flat Major";
+    
+    printf("Inserting 'Nocturne No. 2 in E-Flat Major' by Frederic Chopin...\n");
+    song = insert(song, name_3, artist_2);
+    
+    char name_4[50] = "Symphony No. 3 in F Major";
+    char artist_3[50] = "Johannes Brahms";
+    
+    printf("Inserting 'Symphony No. 3 in F Major' by Johannes Brahms...\n");
+    song = insert(song, name_4, artist_3);
+    
+    printf("\nprint_list:\n");
+    print_list(song);
+    
+    printf("\n------------ Testing get ------------\nGet 'Requiem in D Minor' by Wolfgang Amadeus Mozart: ");
+    
+    struct song_node *song_0 = get(song, name_1, artist_1);
+    if (song_0) printf("Song {Name: %s, Artist: %s}\n", song_0->name, song_0->artist);
+    else printf("Not found\n");
+    
+    printf("Get 'Symphony No. 3 in F Major' by Johannes Brahms: ");
+    struct song_node *song_1 = get(song, name_4, artist_3);
+    if (song_1) printf("Song {Name: %s, Artist: %s}\n", song_1->name, song_1->artist);
+    else printf("Not found\n");
+    
+    printf("Get 'Fake Song' by I Don't Exist: ");
+    
+    char fake_name[50] = "Fake Song";
+    char fake_artist[50] = "I Don't Exist";
+    
+    struct song_node *song_2 = get(song, fake_name, fake_artist);
+    if (song_2) printf("Song {Name: %s, Artist: %s}\n", song_2->name, song_2->artist);
+    else printf("Not found\n");
+    
+    printf("\n------------ Testing get_first ------------\nGet first by Johann Sebastian Bach: ");
+    
+    struct song_node *song_3 = get_first(song, artist_0);
+    if (song_3) printf("Song {Name: %s, Artist: %s}\n", song_3->name, song_3->artist);
+    else printf("Not found\n");
+    
+    printf("Get first by Frederic Chopin: ");
+    struct song_node *song_4 = get_first(song, artist_2);
+    if (song_4) printf("Song {Name: %s, Artist: %s}\n", song_4->name, song_4->artist);
+    else printf("Not found\n");
+    
+    printf("Get first by I Don't Exist: ");
+    struct song_node *song_5 = get_first(song, fake_artist);
+    if (song_5) printf("Song {Name: %s, Artist: %s}\n", song_5->name, song_5->artist);
+    else printf("Not found\n");
 }
