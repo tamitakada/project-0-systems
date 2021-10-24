@@ -12,10 +12,53 @@ int main() {
     srand(time(NULL));
     
     printf("\nTESTING LINKED LIST FUNCS ==================================\n\n");
-    test_linked_list();
+    //test_linked_list();
     
     printf("TESTING LIBRARY FUNCS ==================================\n\n");
-    test_library();
+    //test_library();
+    
+    printf("------------ Get Test ------------\n");
+    
+    char name_0[50] = "Hello";
+    char artist_0[50] = "Adele";
+    
+    struct song_node *hello = 0;
+    hello = insert(hello, name_0, artist_0);
+    
+    char name_1[50] = "22";
+    char artist_1[50] = "Taylor";
+	hello = insert(hello, name_1, artist_1);
+	
+    printf("%p: \n", get(hello, name_0, artist_0));
+    printf("%p: \n", hello);
+    printf("%p: \n", get(hello, name_1, artist_1));
+    printf("%p: \n", hello->next);
+    
+    
+    printf("------------ Get First Test ------------\n");
+	
+	char name_2[50] = "Wildest Dreams";
+	hello = insert(hello, name_2, artist_1);
+	
+    printf("%p: \n", get_first(hello, artist_0));
+    printf("%p: \n", hello);
+ 
+    printf("%p: \n", get_first(hello, artist_1));
+    printf("%p: \n\n", hello->next);
+    
+    char name_3[50] = "Baby";
+    char artist_2[50] = "Justin";
+   	hello = insert(hello, name_3, artist_2);
+   	
+   	char name_4[50] = "Boyfriend";
+   	hello = insert(hello, name_4, artist_2);
+   	
+   	printf("%p: \n", get_first(hello, artist_2));
+   	hello = hello->next;
+   	hello = hello->next;
+   	hello = hello->next;
+   	printf("%p: \n", hello);
+    
 }
 
 void test_library() {
