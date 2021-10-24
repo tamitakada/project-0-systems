@@ -3,7 +3,6 @@
 #include <time.h>
 
 #include "library.h"
-#include "test.h"
 #include "linked_list.h"
 
 void test_library();
