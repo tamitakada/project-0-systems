@@ -65,7 +65,6 @@ int songcmp(struct song_node *first, struct song_node *second) {
         int song_cmp = strcmp(first->name, second->name);
         return song_cmp;
     }
->>>>>>> c96444960aea4170036b6fc39365d8e72ff974ed
 }
 
 struct song_node * insert_front(struct song_node *next, char *name, char *artist) {
