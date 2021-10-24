@@ -23,7 +23,7 @@ struct song_node * get(struct song_node *s, char *name, char *artist) {
 
 struct song_node *get_first(struct song_node *s, char *artist) {
 	while (s) {
-		if (strcmp(s->artist, artist) == 0) return s;
+		if(strcmp(s->artist, artist) == 0) return s;
 		s = s->next;
 	}
     return 0;
@@ -77,6 +77,25 @@ int songcmp(struct song_node *first, struct song_node *second) {
         int song_cmp = strcmp(first->name, second->name);
         return song_cmp;
     }
+}
+
+struct song_node * get_random(struct song_node *s) {
+    int size = 0;
+    struct song_node *temp = s;
+    while (temp) {
+        size++;
+        temp = temp->next;
+    }
+    
+    int random = (rand() % size);
+    int current = 0;
+    while (current < random) {
+    	current++;
+    	s = s->next;
+    }
+    
+    return s;
+}
 
 struct song_node * insert_front(struct song_node *next, char *name, char *artist) {
     struct song_node *new_song = malloc(sizeof(struct song_node));
@@ -111,3 +130,4 @@ struct song_node * remove_node(struct song_node *front, char *name, char *artist
     }
     return front;
 }
+
