@@ -7,7 +7,7 @@
 void populate_random_arr(char *arr, int len) {
     int i;
     for (i = 0; i < len; i++) {
-    arr[i] = (rand() % 24) + 65;
+    	arr[i] = (rand() % 24) + 65;
     }
 
     arr[len - 1] = '\0';
@@ -33,3 +33,13 @@ void insert_front_tests() {
     printf("Insert Front Random Test:\n");
     print_list(start);
 }
+
+void test_get() {
+	struct song_node *tunes;
+	tunes = insert(tunes, "adele", "hello");
+	tunes = insert(tunes, "taylor", "22");
+    print_list(tunes);
+    print(get(tunes, "taylor", "22"));
+}
+    
+    
