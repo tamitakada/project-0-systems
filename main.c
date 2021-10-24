@@ -33,19 +33,19 @@ int main() {
 	hello = insert(hello, name_2, artist_1);
 	
     printf("looking for hello, adele: %p \n", get(hello, name_0, artist_0));
-    printf("found hello, adele: \t  %p \n", hello);
+    printf("found hello, adele: \t  %p \n\n", hello);
     
     printf("looking for 22, taylor: %p \n", get(hello, name_1, artist_1));
-    printf("found 22, taylor: \t%p \n", hello->next);
+    printf("found 22, taylor: \t%p \n\n", hello->next);
     
     printf("looking for wildest dreams, taylor: %p \n", get(hello, name_2, artist_1));
-    printf("found wildest dreams, taylor: \t    %p \n", hello->next->next);
+    printf("found wildest dreams, taylor: \t    %p \n\n", hello->next->next);
     
     
     printf("\n------------ Get First Test ------------\n");
 	
     printf("looking for adele %p \n", get_first(hello, artist_0));
-    printf("found adele: \t  %p \n", hello);
+    printf("found adele: \t  %p \n\n", hello);
  
     printf("looking for taylor: %p \n", get_first(hello, artist_1));
     printf("found taylor: \t    %p \n\n", hello->next);
