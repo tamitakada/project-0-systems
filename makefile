@@ -1,10 +1,10 @@
-all: main.o test.o linked_list.o
-	gcc -o main main.o test.o linked_list.o
-main.o: main.c test.h
+all: main.o linked_list.o library.o
+	gcc -o main main.o linked_list.o library.o
+main.o: main.c linked_list.h library.h
 	gcc -c main.c
-test.o: test.c linked_list.h
-	gcc -c test.c
-linked_list.o: linked_list.c
+linked_list.o: linked_list.c linked_list.h
 	gcc -c linked_list.c
+library.o: library.c linked_list.h
+	gcc -c library.c
 run: main
 	./main
