@@ -29,22 +29,26 @@ int main() {
     char artist_1[50] = "Taylor";
 	hello = insert(hello, name_1, artist_1);
 	
-    printf("%p: \n", get(hello, name_0, artist_0));
-    printf("%p: \n", hello);
-    printf("%p: \n", get(hello, name_1, artist_1));
-    printf("%p: \n", hello->next);
-    
-    
-    printf("------------ Get First Test ------------\n");
-	
 	char name_2[50] = "Wildest Dreams";
 	hello = insert(hello, name_2, artist_1);
 	
-    printf("%p: \n", get_first(hello, artist_0));
-    printf("%p: \n", hello);
+    printf("looking for hello, adele: %p \n", get(hello, name_0, artist_0));
+    printf("found hello, adele: \t  %p \n", hello);
+    
+    printf("looking for 22, taylor: %p \n", get(hello, name_1, artist_1));
+    printf("found 22, taylor: \t%p \n", hello->next);
+    
+    printf("looking for wildest dreams, taylor: %p \n", get(hello, name_2, artist_1));
+    printf("found wildest dreams, taylor: \t    %p \n", hello->next->next);
+    
+    
+    printf("\n------------ Get First Test ------------\n");
+	
+    printf("looking for adele %p \n", get_first(hello, artist_0));
+    printf("found adele: \t  %p \n", hello);
  
-    printf("%p: \n", get_first(hello, artist_1));
-    printf("%p: \n\n", hello->next);
+    printf("looking for taylor: %p \n", get_first(hello, artist_1));
+    printf("found taylor: \t    %p \n\n", hello->next);
     
     char name_3[50] = "Baby";
     char artist_2[50] = "Justin";
@@ -53,11 +57,11 @@ int main() {
    	char name_4[50] = "Boyfriend";
    	hello = insert(hello, name_4, artist_2);
    	
-   	printf("%p: \n", get_first(hello, artist_2));
+   	printf("looking for justin: %p \n", get_first(hello, artist_2));
    	hello = hello->next;
    	hello = hello->next;
    	hello = hello->next;
-   	printf("%p: \n", hello->next);
+   	printf("found justin: \t    %p \n", hello->next);
     
 }
 
