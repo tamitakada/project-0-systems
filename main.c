@@ -7,6 +7,7 @@
 
 void test_library();
 void test_linked_list();
+void test_linked_list2();
 
 int main() {
     srand(time(NULL));
@@ -17,8 +18,6 @@ int main() {
     
     printf("TESTING LIBRARY FUNCS ==================================\n\n");
     test_library();
-    
-   	
 }
 
 void test_library() {
@@ -215,7 +214,7 @@ void test_linked_list() {
 }
 
 void test_linked_list2() {
-	printf("------------ Get Test ------------\n");
+	printf("------------ More Get Tests ------------\n");
     
     char name_0[50] = "Hello";
     char artist_0[50] = "Adele";
@@ -240,7 +239,7 @@ void test_linked_list2() {
     printf("found wildest dreams, taylor: \t    %p \n\n", hello->next->next);
     
     
-    printf("\n------------ Get First Test ------------\n");
+    printf("\n------------ More Get First Tests  ------------\n");
 	
     printf("looking for adele %p \n", get_first(hello, artist_0));
     printf("found adele: \t  %p \n\n", hello);
