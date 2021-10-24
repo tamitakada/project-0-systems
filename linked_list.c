@@ -23,7 +23,7 @@ struct song_node * get(struct song_node *s, char *name, char *artist) {
 
 struct song_node *get_first(struct song_node *s, char *artist) {
 	while (s) {
-		if (strcmp(s->artist, artist) == 0) return s;
+		if(strcmp(s->artist, artist) == 0) return s;
 		s = s->next;
 	}
     return 0;
@@ -130,3 +130,4 @@ struct song_node * remove_node(struct song_node *front, char *name, char *artist
     }
     return front;
 }
+

@@ -13,9 +13,12 @@ int main() {
     
     printf("\nTESTING LINKED LIST FUNCS ==================================\n\n");
     test_linked_list();
+    test_linked_list2();
     
     printf("TESTING LIBRARY FUNCS ==================================\n\n");
     test_library();
+    
+   	
 }
 
 void test_library() {
@@ -209,4 +212,97 @@ void test_linked_list() {
     struct song_node *song_5 = get_first(song, fake_artist);
     if (song_5) printf("Song {Name: %s, Artist: %s}\n", song_5->name, song_5->artist);
     else printf("Not found\n");
+}
+
+void test_linked_list2() {
+	printf("------------ Get Test ------------\n");
+    
+    char name_0[50] = "Hello";
+    char artist_0[50] = "Adele";
+    
+    struct song_node *hello = 0;
+    hello = insert(hello, name_0, artist_0);
+    
+    char name_1[50] = "22";
+    char artist_1[50] = "Taylor";
+	hello = insert(hello, name_1, artist_1);
+	
+	char name_2[50] = "Wildest Dreams";
+	hello = insert(hello, name_2, artist_1);
+	
+    printf("looking for hello, adele: %p \n", get(hello, name_0, artist_0));
+    printf("found hello, adele: \t  %p \n\n", hello);
+    
+    printf("looking for 22, taylor: %p \n", get(hello, name_1, artist_1));
+    printf("found 22, taylor: \t%p \n\n", hello->next);
+    
+    printf("looking for wildest dreams, taylor: %p \n", get(hello, name_2, artist_1));
+    printf("found wildest dreams, taylor: \t    %p \n\n", hello->next->next);
+    
+    
+    printf("\n------------ Get First Test ------------\n");
+	
+    printf("looking for adele %p \n", get_first(hello, artist_0));
+    printf("found adele: \t  %p \n\n", hello);
+ 
+    printf("looking for taylor: %p \n", get_first(hello, artist_1));
+    printf("found taylor: \t    %p \n\n", hello->next);
+    
+    char name_3[50] = "Baby";
+    char artist_2[50] = "Justin";
+   	hello = insert(hello, name_3, artist_2);
+   	
+   	char name_4[50] = "Boyfriend";
+   	hello = insert(hello, name_4, artist_2);
+   	
+   	//printf("looking for justin: %p \n", get_first(hello, artist_2));
+   	hello = hello->next;
+   	hello = hello->next;
+   	hello = hello->next;
+   	//printf("found justin: \t    %p \n", hello->next);
+   	
+   	printf("\n------------ Remove Node Test ------------\n");
+    struct song_node *hi = 0;
+    hi = insert(hi, name_0, artist_0);
+	hi = insert(hi, name_1, artist_1);
+	hi = insert(hi, name_2, artist_1);
+	
+	printf("original list: \t\t\t");
+	
+	print_list(hi);
+	hi = remove_node(hi, name_1, artist_1);
+	printf("\nafter removing 22: \t\t");
+	print_list(hi);
+	
+	hi = remove_node(hi, name_0, artist_0);
+	printf("\nafter removing hello: \t\t");
+	print_list(hi);
+	
+	hi = remove_node(hi, name_2, artist_1);
+	printf("\nafter removing wildest dreams:  ");
+	print_list(hi);
+	
+   	printf("\n------------ Free List Test ------------\n");
+   	struct song_node *hey = 0;
+   	hey = insert(hey, name_0, artist_0);
+   	hey = insert(hey, name_1, artist_1);
+   	hey = insert(hey, name_2, artist_1);
+   	printf("original list:  ");
+   	print_list(hey);
+   	hey = free_list(hey);
+   	printf("freed list:\t");
+   	print_list(hey);
+   	
+   	printf("\n------------ Get Random Test ------------\n");
+    struct song_node *hola = 0;
+    hola = insert(hola, name_0, artist_0);
+	hola = insert(hola, name_1, artist_1);
+	hola = insert(hola, name_2, artist_1);
+	
+	printf("only possible pointers: %p, %p, %p \n", hola, hola->next, hola->next->next);
+	printf("getting random: %p \n", get_random(hola));
+	printf("getting random: %p \n", get_random(hola));
+	printf("getting random: %p \n", get_random(hola));
+	printf("getting random: %p \n", get_random(hola));
+	printf("getting random: %p \n", get_random(hola));
 }
