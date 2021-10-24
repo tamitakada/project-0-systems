@@ -34,12 +34,5 @@ void insert_front_tests() {
     print_list(start);
 }
 
-void test_get() {
-	struct song_node *tunes;
-	tunes = insert(tunes, "adele", "hello");
-	tunes = insert(tunes, "taylor", "22");
-    print_list(tunes);
-    print(get(tunes, "taylor", "22"));
-}
     
     
