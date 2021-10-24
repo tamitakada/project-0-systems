@@ -12,11 +12,11 @@ int main() {
     srand(time(NULL));
     
     printf("\nTESTING LINKED LIST FUNCS ==================================\n\n");
-    //test_linked_list();
+    test_linked_list();
     test_linked_list2();
     
     printf("TESTING LIBRARY FUNCS ==================================\n\n");
-    //test_library();
+    test_library();
     
    	
 }
@@ -305,7 +305,4 @@ void test_linked_list2() {
 	printf("getting random: %p \n", get_random(hola));
 	printf("getting random: %p \n", get_random(hola));
 	printf("getting random: %p \n", get_random(hola));
-	
-	struct song_node *empty = 0;
-	printf("getting random of empty list: %p \n", get_random(empty));
 }
